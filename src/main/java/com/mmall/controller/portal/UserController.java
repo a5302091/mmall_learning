@@ -41,7 +41,7 @@ public class UserController {
     }
 
     //用户退出
-    @RequestMapping(value = "logout.do", method = RequestMethod.GET)
+    @RequestMapping(value = "logout.do", method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> logout(HttpSession session) {
         session.removeAttribute(Const.CURRENT_USER);
@@ -100,18 +100,19 @@ public class UserController {
     }
 
     //更新用户个人信息
-    @RequestMapping(value = "update_information.do", method = RequestMethod.POST)
+    @RequestMapping(value = "update_information.do",method = RequestMethod.POST)
     @ResponseBody
-    public ServerResponse<User> update_information(HttpSession session, User user) {
-        User currentuser = (User) session.getAttribute(Const.CURRENT_USER);
-        if (currentuser == null) {
+    public ServerResponse<User> update_information(HttpSession session,User user){
+        User currentUser = (User)session.getAttribute(Const.CURRENT_USER);
+        if(currentUser == null){
             return ServerResponse.createByErrorMessage("用户未登录");
         }
-        user.setId(currentuser.getId());
-        user.setUsername(currentuser.getUsername());
+        user.setId(currentUser.getId());
+        user.setUsername(currentUser.getUsername());
         ServerResponse<User> response = iUserService.updateInformation(user);
         if(response.isSuccess()){
-             session.setAttribute(Const.CURRENT_USER,response.getData());
+            response.getData().setUsername(currentUser.getUsername());
+            session.setAttribute(Const.CURRENT_USER,response.getData());
         }
         return response;
     }
