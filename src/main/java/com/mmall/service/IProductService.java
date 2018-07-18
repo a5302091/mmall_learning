@@ -1,29 +1,26 @@
 package com.mmall.service;
 
+
 import com.github.pagehelper.PageInfo;
 import com.mmall.common.ServerResponse;
 import com.mmall.pojo.Product;
 import com.mmall.vo.ProductDetailVo;
 
-/**
- * Created by geely
- */
 public interface IProductService {
 
+    //新增或更新产品
     ServerResponse saveOrUpdateProduct(Product product);
 
-    ServerResponse<String> setSaleStatus(Integer productId,Integer status);
+    //产品销售状态更新
+    ServerResponse setSaleStatus(Integer productId, Integer status);
 
+    //获取产品详情
     ServerResponse<ProductDetailVo> manageProductDetail(Integer productId);
 
-    ServerResponse<PageInfo> getProductList(int pageNum, int pageSize);
+    //分页查询商品列表
+    ServerResponse<PageInfo> getProductList(Integer pageNum, Integer pageSize);
 
-    ServerResponse<PageInfo> searchProduct(String productName,Integer productId,int pageNum,int pageSize);
-
-    ServerResponse<ProductDetailVo> getProductDetail(Integer productId);
-
-    ServerResponse<PageInfo> getProductByKeywordCategory(String keyword,Integer categoryId,int pageNum,int pageSize,String orderBy);
-
-
+    //商品搜索
+    ServerResponse<PageInfo> searchProduct(String productName, Integer productId, int pageNum, int pageSize);
 
 }

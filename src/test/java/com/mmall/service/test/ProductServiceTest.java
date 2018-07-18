@@ -20,8 +20,8 @@ public class ProductServiceTest extends TestBase {
 
     @Test
     public void testIProductService(){
-        ServerResponse<PageInfo> result =  iProductService.getProductByKeywordCategory("iphone",2,1,5,"price_desc");
-        System.out.println(result);
+      //  ServerResponse<PageInfo> result =  iProductService.getProductByKeywordCategory("iphone",2,1,5,"price_desc");
+       // System.out.println(result);
     }
 
     public static void main(String[] args) {

@@ -5,13 +5,17 @@ import com.mmall.pojo.Category;
 
 import java.util.List;
 
-/**
- * Created by geely
- */
 public interface ICategoryService {
+    //添加品类
     ServerResponse addCategory(String categoryName, Integer parentId);
-    ServerResponse updateCategoryName(Integer categoryId,String categoryName);
+
+    //更新品类名称
+    ServerResponse updateCategoryName(Integer categoryId, String categoryName);
+
+    //平级查询
     ServerResponse<List<Category>> getChildrenParallelCategory(Integer categoryId);
-    ServerResponse<List<Integer>> selectCategoryAndChildrenById(Integer categoryId);
+
+    //递归查询孩子节点
+    ServerResponse selectCategoryAndChildrenById(Integer categoryId);
 
 }
