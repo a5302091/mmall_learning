@@ -16,6 +16,6 @@ public interface ICategoryService {
     ServerResponse<List<Category>> getChildrenParallelCategory(Integer categoryId);
 
     //递归查询孩子节点
-    ServerResponse selectCategoryAndChildrenById(Integer categoryId);
+    ServerResponse<List<Integer>> selectCategoryAndChildrenById(Integer categoryId);
 
 }
