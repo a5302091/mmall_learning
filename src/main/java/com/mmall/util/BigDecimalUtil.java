@@ -1,10 +1,6 @@
 package com.mmall.util;
 
 import java.math.BigDecimal;
-
-/**
- * Created by geely
- */
 public class BigDecimalUtil {
 
     private BigDecimalUtil(){
