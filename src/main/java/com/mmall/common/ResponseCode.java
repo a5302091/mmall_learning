@@ -1,8 +1,5 @@
 package com.mmall.common;
 
-/**
- * Created by geely
- */
 public enum ResponseCode {
 
     SUCCESS(0,"SUCCESS"),
