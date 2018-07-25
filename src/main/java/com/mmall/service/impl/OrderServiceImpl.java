@@ -210,7 +210,7 @@ public class OrderServiceImpl implements IOrderService {
     }
 
     //获取订单详情
-    public ServerResponse getOrderDeatil(Integer userId, Long orderNo) {
+    public ServerResponse   getOrderDeatil(Integer userId, Long orderNo) {
         Order order = orderMapper.selectByUserIdAndOrderNo(userId, orderNo);
         if (order != null) {
             List<OrderItem> orderItemList = orderItemMapper.getByOrderNoUserId(orderNo, userId);
@@ -517,11 +517,11 @@ public class OrderServiceImpl implements IOrderService {
 
 
     //管理员查看订单
-    public ServerResponse<PageInfo> manageList(int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
+    public ServerResponse<PageInfo> manageList(int pageNum,int pageSize){
+            PageHelper.startPage(pageNum, pageSize);
         List<Order> orderList = orderMapper.selectAllOrder();
         List<OrderVo> orderVoList = this.assembleOrderVoList(orderList, null);
-        PageInfo pageResult = new PageInfo(orderList);
+        PageInfo pageResult=new PageInfo();
         pageResult.setList(orderVoList);
 
         return ServerResponse.createBySuccess(pageResult);
