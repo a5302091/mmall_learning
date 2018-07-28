@@ -22,6 +22,7 @@ F:\v0z6xp\src\main\java\com\mmall\pojo\PayInfo.java
 F:\v0z6xp\src\main\java\com\aiipay\demo\trade\DemoHbRunner.java
 F:\v0z6xp\src\main\java\com\mmall\controller\portal\UserController.java
 F:\v0z6xp\src\main\java\com\mmall\service\impl\ShippingServiceImpl.java
+F:\v0z6xp\src\main\java\com\mmall\util\RedisPollUtil.java
 F:\v0z6xp\src\main\java\com\mmall\common\ResponseCode.java
 F:\v0z6xp\src\main\java\com\mmall\controller\portal\ProductController.java
 F:\v0z6xp\src\main\java\com\mmall\util\MD5Util.java
@@ -37,12 +38,15 @@ F:\v0z6xp\src\main\java\com\mmall\dao\ShippingMapper.java
 F:\v0z6xp\src\main\java\com\mmall\service\impl\CartServiceImpl.java
 F:\v0z6xp\src\main\java\com\mmall\util\ZxingUtils.java
 F:\v0z6xp\src\main\java\com\mmall\dao\OrderItemMapper.java
+F:\v0z6xp\src\main\java\com\mmall\util\CookieUtil.java
+F:\v0z6xp\src\main\java\com\mmall\common\RedisPool.java
 F:\v0z6xp\src\main\java\com\mmall\vo\OrderProductVo.java
 F:\v0z6xp\src\main\java\com\mmall\pojo\OrderItem.java
 F:\v0z6xp\src\main\java\com\mmall\util\BigDecimalUtil.java
 F:\v0z6xp\src\main\java\com\mmall\vo\CartVo.java
 F:\v0z6xp\src\main\java\com\mmall\service\impl\UserServiceImpl.java
 F:\v0z6xp\src\main\java\com\mmall\vo\ShippingVo.java
+F:\v0z6xp\src\main\java\com\mmall\util\JsonUtil.java
 F:\v0z6xp\src\main\java\com\mmall\controller\backend\ProductManageController.java
 F:\v0z6xp\src\main\java\com\mmall\pojo\Category.java
 F:\v0z6xp\src\main\java\com\mmall\service\ICategoryService.java

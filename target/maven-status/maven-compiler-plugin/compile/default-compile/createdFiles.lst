@@ -25,6 +25,8 @@ com\mmall\vo\ShippingVo.class
 com\mmall\vo\OrderItemVo.class
 com\mmall\controller\backend\UserManageController.class
 com\mmall\pojo\Product.class
+com\mmall\util\JsonUtil.class
+com\mmall\util\CookieUtil.class
 com\mmall\util\DateTimeUtil.class
 com\aiipay\demo\trade\Main$1.class
 com\mmall\pojo\OrderItem.class
@@ -52,6 +54,9 @@ com\mmall\dao\ProductMapper.class
 com\mmall\pojo\Cart.class
 com\mmall\service\IFileService.class
 com\mmall\pojo\Category.class
+com\mmall\common\RedisPool.class
+com\mmall\util\RedisPollUtil.class
+com\mmall\common\Const$RedisCacheExtime.class
 com\mmall\service\impl\CartServiceImpl.class
 com\mmall\service\impl\ShippingServiceImpl.class
 com\mmall\util\PropertiesUtil.class

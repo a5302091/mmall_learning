@@ -34,8 +34,6 @@ public class UserController {
         ServerResponse<User> login = iUserService.login(username, password);
         if (login.isSuccess()) {
             CookieUtil.writeLoginToken(response,session.getId());
-            CookieUtil.readLoginToken(request);
-            CookieUtil.delLoginToken(request, response);
             RedisPollUtil.setEx(session.getId(), JsonUtil.obj2String(login.getData()), Const.RedisCacheExtime.REDIS_SESSION_EXTIME);
         }
         return login;
@@ -51,8 +49,9 @@ public class UserController {
     //用户退出
     @RequestMapping(value = "logout.do", method = RequestMethod.POST)
     @ResponseBody
-    public ServerResponse<String> logout(HttpSession session) {
+    public ServerResponse<String> logout(HttpSession session,HttpServletRequest request,HttpServletResponse response) {
         session.removeAttribute(Const.CURRENT_USER);
+        CookieUtil.delLoginToken(request, response);
         return ServerResponse.createBySuccess();
     }
 
