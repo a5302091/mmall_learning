@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10dcfee6-de2a-4178-a66e-f3dd7876f177" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mmall/common/Const.java" afterPath="$PROJECT_DIR$/src/main/java/com/mmall/common/Const.java" />
-    </list>
+    <list default="true" id="10dcfee6-de2a-4178-a66e-f3dd7876f177" name="Default" comment="" />
     <ignored path="mmall.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -1436,12 +1434,12 @@
       <workItem from="1532701316497" duration="2953000" />
       <workItem from="1532742806477" duration="10384000" />
       <workItem from="1532950277045" duration="5389000" />
-      <workItem from="1532994667048" duration="3470000" />
+      <workItem from="1532994667048" duration="3655000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="140560000" />
+    <option name="totallyTimeSpent" value="140745000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
