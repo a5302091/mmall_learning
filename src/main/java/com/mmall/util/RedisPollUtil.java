@@ -4,9 +4,6 @@ import com.mmall.common.RedisPool;
 import lombok.extern.slf4j.Slf4j;
 import redis.clients.jedis.Jedis;
 
-/**
- * Created by Administrator on 2018/7/27.
- */
 @Slf4j
 public class RedisPollUtil {
 

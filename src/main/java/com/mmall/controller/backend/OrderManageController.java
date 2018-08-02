@@ -10,7 +10,7 @@ import com.mmall.service.IUserService;
 import com.mmall.service.impl.OrderServiceImpl;
 import com.mmall.util.CookieUtil;
 import com.mmall.util.JsonUtil;
-import com.mmall.util.RedisPollUtil;
+import com.mmall.util.RedisShardedPollUtil;
 import com.mmall.vo.OrderVo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +44,7 @@ public class OrderManageController {
         if (StringUtils.isEmpty(loginToken)) {
             return ServerResponse.createByErrorMessage("用户未登录,无法获取用户信息");
         }
-        String userJsonStr = RedisPollUtil.get(loginToken);
+        String userJsonStr = RedisShardedPollUtil.get(loginToken);
         User user = JsonUtil.string2Obj(userJsonStr, User.class);
         if (user == null) {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), "请先登录");
@@ -66,7 +66,7 @@ public class OrderManageController {
         if (StringUtils.isEmpty(loginToken)) {
             return ServerResponse.createByErrorMessage("用户未登录,无法获取用户信息");
         }
-        String userJsonStr = RedisPollUtil.get(loginToken);
+        String userJsonStr = RedisShardedPollUtil.get(loginToken);
         User user = JsonUtil.string2Obj(userJsonStr, User.class);
         if (user == null) {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), "请先登录");
@@ -89,7 +89,7 @@ public class OrderManageController {
         if (StringUtils.isEmpty(loginToken)) {
             return ServerResponse.createByErrorMessage("用户未登录,无法获取用户信息");
         }
-        String userJsonStr = RedisPollUtil.get(loginToken);
+        String userJsonStr = RedisShardedPollUtil.get(loginToken);
         User user = JsonUtil.string2Obj(userJsonStr, User.class);
         if (user == null) {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), "请先登录");
@@ -111,7 +111,7 @@ public class OrderManageController {
         if (StringUtils.isEmpty(loginToken)) {
             return ServerResponse.createByErrorMessage("用户未登录,无法获取用户信息");
         }
-        String userJsonStr = RedisPollUtil.get(loginToken);
+        String userJsonStr = RedisShardedPollUtil.get(loginToken);
         User user = JsonUtil.string2Obj(userJsonStr, User.class);
         if (user == null) {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), "请先登录");

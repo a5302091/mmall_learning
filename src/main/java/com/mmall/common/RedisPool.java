@@ -4,12 +4,12 @@ import com.mmall.util.PropertiesUtil;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
+import redis.clients.jedis.ShardedJedis;
 
 /**
  * Created by Administrator on 2018/7/27.
  */
 public class RedisPool {
-
     private static JedisPool pool;//jedis连接池
     private static Integer maxTotal = Integer.parseInt(PropertiesUtil.getProperty("redis.max.total", "20"));//最大连接数
     private static Integer maxIdle = Integer.parseInt(PropertiesUtil.getProperty("redis.max.idle", "20"));//在JedisPool中最大的idle状态(空闲状态)的jedis实列的个数
@@ -17,8 +17,8 @@ public class RedisPool {
     private static Boolean testOnBorrow = Boolean.parseBoolean(PropertiesUtil.getProperty("redis.test.borrow", "true"));//borrow是否要进行验证操作,如果为true,则得到的jedis实列是可以用的
     private static Boolean testOnReturn = Boolean.parseBoolean(PropertiesUtil.getProperty("redis.test.return", "true"));//return是否要进行验证操作,如果为true,则得到的jedis实列是可以用的
 
-    private static String redisIp = PropertiesUtil.getProperty("redis.ip");
-    private static Integer redisPort = Integer.parseInt(PropertiesUtil.getProperty("redis.port"));
+    private static String redisIp = PropertiesUtil.getProperty("redis.ip1");
+    private static Integer redisPort = Integer.parseInt(PropertiesUtil.getProperty("redis.port1"));
 
     private static void initPool() {
         JedisPoolConfig config = new JedisPoolConfig();
