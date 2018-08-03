@@ -32,9 +32,10 @@ public class UserSpringSessionController {
     @RequestMapping(value = "login.do", method = RequestMethod.GET)
     @ResponseBody
     public ServerResponse<User> login(String username, String password, HttpSession session, HttpServletResponse response) {
+
         ServerResponse<User> login = iUserService.login(username, password);
         if (login.isSuccess()) {
-            session.setAttribute(Const.CURRENT_USER,login.getData());
+           session.setAttribute(Const.CURRENT_USER,login.getData());
            // CookieUtil.writeLoginToken(response, session.getId());
             //RedisShardedPollUtil.setEx(session.getId(), JsonUtil.obj2String(login.getData()), Const.RedisCacheExtime.REDIS_SESSION_EXTIME);
         }

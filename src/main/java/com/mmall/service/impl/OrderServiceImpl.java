@@ -30,6 +30,7 @@ import com.mmall.vo.ShippingVo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -209,7 +210,7 @@ public class OrderServiceImpl implements IOrderService {
     }
 
     //获取订单详情
-    public ServerResponse   getOrderDeatil(Integer userId, Long orderNo) {
+    public ServerResponse getOrderDeatil(Integer userId, Long orderNo) {
         Order order = orderMapper.selectByUserIdAndOrderNo(userId, orderNo);
         if (order != null) {
             List<OrderItem> orderItemList = orderItemMapper.getByOrderNoUserId(orderNo, userId);
@@ -516,11 +517,11 @@ public class OrderServiceImpl implements IOrderService {
 
 
     //管理员查看订单
-    public ServerResponse<PageInfo> manageList(int pageNum,int pageSize){
-            PageHelper.startPage(pageNum, pageSize);
+    public ServerResponse<PageInfo> manageList(int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
         List<Order> orderList = orderMapper.selectAllOrder();
         List<OrderVo> orderVoList = this.assembleOrderVoList(orderList, null);
-        PageInfo pageResult=new PageInfo();
+        PageInfo pageResult = new PageInfo();
         pageResult.setList(orderVoList);
 
         return ServerResponse.createBySuccess(pageResult);
@@ -570,6 +571,30 @@ public class OrderServiceImpl implements IOrderService {
         }
         return ServerResponse.createByErrorMessage("订单不存在");
 
+    }
+
+    @Override
+    public void closeOrder(int hour) {
+        Date closeDateTime = DateUtils.addHours(new Date(), -hour);
+        List<Order> orderList = orderMapper.selectOrderStatusByCreateTime(Const.OrderStatusEnum.NO_PAY.getCode(), DateTimeUtil.dateToStr(closeDateTime));
+        for (Order order : orderList) {
+            List<OrderItem> orderItemList = orderItemMapper.getByOrderNo(order.getOrderNo());
+            for (OrderItem item : orderItemList) {
+                //使用主键 防止锁表 必须支持MysqlInnoDB引擎
+                Integer productStock = productMapper.selectStockByProductId(item.getProductId());
+
+                //已生成订单被删除的情况
+                if (productStock == null) {
+                    continue;
+                }
+                Product product = new Product();
+                product.setId(item.getProductId());
+                product.setStock(productStock + item.getQuantity());
+                productMapper.updateByPrimaryKeySelective(product);
+            }
+            orderMapper.closeOrderByOrderId(order.getId());
+            log.info("关闭订单 :OrderNo:{} ", order.getOrderNo());
+        }
     }
 
 }

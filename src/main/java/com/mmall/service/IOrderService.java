@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.mmall.common.ServerResponse;
 import com.mmall.vo.OrderVo;
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -32,4 +33,7 @@ public interface IOrderService {
     ServerResponse<PageInfo> manageSearch(Long orderNo,Integer pageNum,Integer pageSize);
 
     ServerResponse<String> manageSendGoods(Long orderNo);
+
+    //关闭未付款订单
+    void closeOrder(int hour);
 }

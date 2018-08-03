@@ -29,4 +29,11 @@ public interface OrderMapper {
 
 
     List<Order> selectAllOrder();
+
+    //定时关闭未付款的订单
+    List<Order> selectOrderStatusByCreateTime(@Param("status") Integer status,@Param("data") String data);
+
+    //关闭订单
+    int closeOrderByOrderId(Integer id);
+
 }
