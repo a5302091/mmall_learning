@@ -14,8 +14,8 @@ public class Const {
     public static final String TOKEN_PREFIX = "token_";
 
 
-    public interface RedisCacheExtime{
-        int REDIS_SESSION_EXTIME=60*30;
+    public interface RedisCacheExtime {
+        int REDIS_SESSION_EXTIME = 60 * 30;
     }
 
     public interface ProductListOrderBy {
@@ -148,6 +148,10 @@ public class Const {
             throw new RuntimeException("么有找到对应的枚举");
         }
 
+    }
+
+    public interface REDIS_LOCK {
+        String CLOSE_ORDER_TASK_LOCK = "CLOSE_ORDER_TASK_LOCK";
     }
 
 
